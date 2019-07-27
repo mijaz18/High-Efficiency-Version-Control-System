@@ -9,4 +9,4 @@
 
 – Used web sockets to implement a two way communication channel
 
-– See Protocol for Syncing Directories.pdf for more details
+– See "Protocol for Syncing Directories.pdf" for more details
