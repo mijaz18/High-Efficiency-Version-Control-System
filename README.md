@@ -5,6 +5,6 @@
 
 – Used Merkle Trees - a specialized data structure for data validation in distributed systems - to compare directories
 
-– Designed a protocol to be used by the client and server to communicate during the file syncing/pushing process (see File Syncing Protocol with Merkle Trees.pdf)
+– Designed a protocol to be used by the client and server to communicate during the file syncing/pushing process (see Protocol for Syncing Directories.pdf)
 
 – Used web sockets to implement a two way communication channel
