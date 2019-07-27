@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,20 +8,29 @@ public class Node {
 	private List<Node> children;
 	private String path;
 	private String name;
+	private File file;
 	private byte[] hash;
 	
-	public Node(List<Node> children, String path, String name, byte[] hash) {
+	public Node(List<Node> children, File file, String path, String name, byte[] hash) {
 		super();
 		this.children = children;
 		this.path = path;
 		this.name = name;
 		this.hash = hash;
+		this.file = file;
 	}
 	
 	@Override
 	public String toString() {
-		return "Node [children=" + children + ", path=" + path + ", name=" + name + ", hash=" + Arrays.toString(hash)
-				+ "]";
+		return name;
+	}
+	
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
 	}
 	
 	public List<Node> getChildren() {

@@ -1,9 +1,8 @@
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -33,9 +32,9 @@ public class Merkle {
 	private Node generateTree(File f) {
 		
 		//if f is a file or f is a directory with no children files
-		if (f.isFile() || f.listFiles().length == 0) {
+		if ((f.isFile() || f.listFiles().length == 0) && !f.isDirectory()) {
 			
-			return new Node(new ArrayList<>(), f.getAbsolutePath(), f.getName(), getMd5Hash(f));
+			return new Node(new ArrayList<>(), f, f.getAbsolutePath(), f.getName(), getMd5Hash(f));
 			
 		}
 		
@@ -59,7 +58,7 @@ public class Merkle {
 				
 			}
 			
-			return new Node(child_nodes, f.getAbsolutePath(), f.getName(), getMd5Hash(hash));
+			return new Node(child_nodes, f, f.getAbsolutePath(), f.getName(), getMd5Hash(hash));
 			
 		}
 		
@@ -84,28 +83,50 @@ public class Merkle {
 	
 	private byte[] getMd5Hash(File f) {
 		
-		
-		MessageDigest md = null;
+		MessageDigest digest = null;
 		
 		try {
-			md = MessageDigest.getInstance("MD5");
+			digest = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		try (InputStream is = Files.newInputStream(f.toPath());
-		     DigestInputStream dis = new DigestInputStream(is, md)) 
-		{
-		  /* Read decorated stream (dis) to EOF as normal... */
+		//Get file input stream for reading the file content
+	    FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(f);
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+	     
+	    //Create byte array to read data in chunks
+	    byte[] byteArray = new byte[1024];
+	    int bytesCount = 0;
+	      
+	    //Read file data and update in message digest
+	    try {
+			while ((bytesCount = fis.read(byteArray)) != -1) {
+			    digest.update(byteArray, 0, bytesCount);
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+	     
+	    //close the stream; We don't need it now.
+	    try {
+			fis.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	     
+	    //Get the hash's bytes
+	    byte[] bytes = digest.digest();
 		
-		byte[] digest = md.digest();
-		
-		return digest;
+		return bytes;
 		
 	}
 	
