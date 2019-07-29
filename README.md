@@ -14,12 +14,12 @@
 
 # Challenges:
 
-- Had to learn how to debug two different programs as they communicated with each other. This was very different from debugging a single program locally. It required more patience and thoughtfulness.
+– Had to learn how to debug two different programs as they communicated with each other. This was very different from debugging a single program locally. It required more patience and thoughtfulness.
 
-- Had to figure out how to figure out how to convert the file hash to a string so it could be sent over the web socket to a scanner. The problem I faced was that this conversion - if done simply using new String(byte[] array) - resulted in information loss and would yield special characters which could not be read by the scanner on the other end. The solution was to use Base64.getEncoder().encodeToString(String str) to do this conversion. Using this method there was no information loss and there were no strange characters that would confuse the scanner.
+– Had to figure out how to figure out how to convert the file hash to a string so it could be sent over the web socket to a scanner. The problem I faced was that this conversion - if done simply using new String(byte[] array) - resulted in information loss and would yield special characters which could not be read by the scanner on the other end. The solution was to use Base64.getEncoder().encodeToString(String str) to do this conversion. Using this method there was no information loss and there were no strange characters that would confuse the scanner.
 
-- I tried to use a single web socket for both the communication protocol and also sending of files. The problem I had was that sometimes when I intended the Server to send a message to the Client's scanner, it would instead write this message into one of the Client's files even though I was sure I had switched the destination of the websocket. To fix, I added Thread.sleep(1) after switching the destination of the websocket. This seemed to solve this problem by giving enough time for this switch to happen.
+– I tried to use a single web socket for both the communication protocol and also sending of files. The problem I had was that sometimes when I intended the Server to send a message to the Client's scanner, it would instead write this message into one of the Client's files even though I was sure I had switched the destination of the websocket. To fix, I added Thread.sleep(1) after switching the destination of the websocket. This seemed to solve this problem by giving enough time for this switch to happen.
 
 # Works Cited:
 
-https://cs.lmu.edu/~ray/notes/javanetexamples/
+– Socket Programming Example: https://cs.lmu.edu/~ray/notes/javanetexamples/
