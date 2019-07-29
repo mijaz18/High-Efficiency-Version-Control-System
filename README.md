@@ -34,6 +34,8 @@
 
 - Add other classic features of version control systems like branching, merging, etc.
 
+- Build a nice user interface using front end web technologies.
+
 # Works Cited:
 
 - Socket Programming Example: https://cs.lmu.edu/~ray/notes/javanetexamples/
