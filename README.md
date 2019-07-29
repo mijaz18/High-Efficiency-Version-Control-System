@@ -26,7 +26,7 @@
 
 - Add the push feature (this should be simple, just reverse the roles of client and server in the sync process).
 
-- Add security so only authorized users can push to server.
+- Add security so only authorized users can push to server or sync with certain directories.
 
 - Extend server code to be able to store multiple directories. Have groups of users linked to each directory on the server. When a user pushes a modification to the server, have the server push the modification to all the users linked to that directory automatically when the users next establish connection.
 
