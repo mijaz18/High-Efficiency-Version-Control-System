@@ -30,7 +30,7 @@
 
 - Extend server code to be able to store multiple directories. Have groups of users linked to each directory on the server. When a user pushes a modification to the server, have the server push the modification to all the users linked to that directory automatically when the users next establish connection.
 
-- Store the old versions of the directories and meta data like which user made the change at what timestamp. Store old versions as sequence of diffs to save memory.
+- Store the old versions of the directories and meta data like which user made what change at what timestamp. Store old versions as a sequence of diffs to save memory.
 
 - Add other classic features of version control systems like branching, merging, etc.
 
