@@ -20,6 +20,20 @@
 
 - I tried to use a single web socket for both the communication protocol and also sending of files. The problem I had was that sometimes when I intended the Server to send a message to the Client's scanner, it would instead write this message into one of the Client's files even though I was sure I had switched the destination of the websocket. To fix, I added Thread.sleep(1) after switching the destination of the websocket. This seemed to solve this problem by giving enough time for this switch to happen.
 
+# To Do:
+
+- Refactor the code that handles the communication between client and server. It's a bit tricky to make this code readable/understandable.
+
+- Add the push feature (this should be simple, just reverse the roles of client and server in the sync process).
+
+- Add security so only authorized users can push to server.
+
+- Extend server code to be able to store multiple directories. Have groups of users linked to each directory on the server. When a user pushes a modification to the server, have the server push the modification to all the users linked to that directory automatically when the users next establish connection.
+
+- Store the old versions of the directories and meta data like which user made the change at what timestamp. Store old versions as sequence of diffs to save memory.
+
+- Add other classic features of version control systems like branching, merging, etc.
+
 # Works Cited:
 
 - Socket Programming Example: https://cs.lmu.edu/~ray/notes/javanetexamples/
