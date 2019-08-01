@@ -22,7 +22,7 @@
 
 # To Do:
 
-- Refactor the code that handles the communication between client and server. It's a bit tricky to make this code readable/understandable.
+- Refactor the code that handles the communication between client and server. It's a bit tricky to make this code readable/understandable.✅
 
 - Add the push feature (this should be simple, just reverse the roles of client and server in the sync process).
 
