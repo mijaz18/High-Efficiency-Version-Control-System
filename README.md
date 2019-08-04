@@ -32,11 +32,11 @@
 
 - Extend server code to be able to store multiple directories. Have groups of users linked to each directory on the server. When a user pushes a modification to the server, have the server push the modification to all the users linked to that directory automatically when the users next establish connection.
 
-- Store the old versions of the directories and meta data like which user made what change at what timestamp. Store old versions as a sequence of diffs to save memory.
+- Store the old versions of the directories and meta data like which user made what change at what timestamp. Store old versions as a sequence of diffs to save memory. Allow users to return directory to a previous state. 
 
 - Subdivide each file into smaller chunks and hash each chunk separately (adding another level to the merkle tree). By constructing the merkle tree in this way, we can identify the specific portion of a file which was modified. If there is a huge file with only one small modification, we only have to send over the chunk which contains this modification rather than the entire file.
 
-- Add other classic features of version control systems like branching, merging, etc.
+- Add other classic features of version control systems like branching, merging, etc. Look into efficient ways of implementing partial vs full vs confluennt persistence. Retroactivity?
 
 - Build a nice user interface using front end web technologies.
 
