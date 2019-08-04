@@ -34,6 +34,8 @@
 
 - Store the old versions of the directories and meta data like which user made what change at what timestamp. Store old versions as a sequence of diffs to save memory.
 
+- Subdivide each file into smaller chunks and hash each chunk separately (adding another level to the merkle tree). By constructing the merkle tree in this way, we can identify the specific portion of a file which was modified. If there is a huge file with only one small modification, we only have to send over the chunk which contains this modification rather than the entire file.
+
 - Add other classic features of version control systems like branching, merging, etc.
 
 - Build a nice user interface using front end web technologies.
